@@ -1,0 +1,4 @@
+Tolong evaluasi struktur laporan berikut:
+1. Apakah terdapat TUGAS 1, jika iya, apakah didalamnya terdapat soal, source code, screenshot, penjelasan?
+2. Apakah terdapat TUGAS 2, jika iya, apakah didalamnya terdapat soal, source code, screenshot, penjelasan?
+3. Apakah terdapat TUGAS 3, jika iya, apakah didalamnya terdapat soal, source code, screenshot, penjelasan
