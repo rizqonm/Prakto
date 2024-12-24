@@ -1,5 +1,11 @@
+import openai
+from dotenv import load_dotenv
+import os
 import re
 import json
+
+load_dotenv()
+openai.api_key = os.getenv("OPENAI_KEY")
 
 pages = [
     {
@@ -24,7 +30,6 @@ pages = [
     }
 ]
 
-# Function to extract tasks
 def extract_tasks(pages):
     task_data = []
     task_num = 0
@@ -67,7 +72,42 @@ def extract_tasks(pages):
 
 tasks = extract_tasks(pages)
 output = json.dumps(tasks, indent=4, ensure_ascii=False)
-print(output)
+# print(output)
 
+# data = [
+#     {
+#         "tugas_num": 1,
+#         "soal": "Buatlah program interaktif untuk menyelesaikan permasalahan menara Hanoi",
+#         "source_code": "hanoi.kt\n...",
+#         "penjelasan": "Program ini memungkinkan pengguna untuk memasukkan jumlah\ncakram...",
+#         "screenshot": "Screenshot placeholder"
+#     },
+#     {
+#         "tugas_num": 2,
+#         "soal": "Client meminta program pendataan buku. Dengan fitur menambahkan buku\ndan melihat seluruh daftar buku yang ada...",
+#         "source_code": "dataBuku.kt\n...",
+#         "penjelasan": "Program ini mengikuti paradigma object-oriented dengan dua kelas\nutama...",
+#         "screenshot": "Screenshot placeholder"
+#     }
+# ]
 
+# Mengirim data ke OpenAI untuk evaluasi
+messages = [
+    {"role": "system", "content": "Kamu adalah asisten AI yang bertugas mengevaluasi source code dan penjelasan dari setiap soal."},
+    {"role": "user", "content": f"Evaluasi laporan berikut:\n\n{output}\n\nUntuk setiap tugas, lakukan:\n1. Periksa apakah source code sesuai dengan soal.\n2. Periksa apakah penjelasan menjelaskan dengan jelas bagaimana program berjalan.\n\nHasil evaluasi harus mencakup:\n- Kesimpulan untuk setiap tugas, apakah source code dan penjelasan sudah sesuai.\n- Kesimpulan keseluruhan apakah semua elemen sudah sesuai.\n- Nilai akhir dengan format x/100.\n- Saran perbaikan jika ada yang salah."}
+]
 
+try:
+    # Mengirim permintaan ke OpenAI
+    response = openai.ChatCompletion.create(
+        model="gpt-3.5-turbo",
+        messages=messages,
+        max_tokens=300,
+        temperature=0.5
+    )
+    
+    evaluation = response['choices'][0]['message']['content']
+    print("Hasil Evaluasi Laporan:")
+    print(evaluation)
+except Exception as e:
+    print("Terjadi kesalahan:", e)
