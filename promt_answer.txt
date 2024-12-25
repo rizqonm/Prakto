@@ -1,0 +1,9 @@
+Untuk setiap tugas, lakukan:
+1. Periksa apakah source code sesuai dengan soal.
+2. Periksa apakah penjelasan menjelaskan dengan jelas bagaimana program berjalan.
+
+Format outputnya harus fix seperti format dibawah, isinya saja yang disesuaikan. pada saran dan nilai akhir pastikan diikuti dengan :. serta isi dari saran dan nilai tanpa di enter
+- Kesimpulan untuk setiap tugas, apakah source code dan penjelasan sudah sesuai.
+- Kesimpulan keseluruhan apakah semua elemen sudah sesuai.
+- Saran: penjelasan saran
+- Nilai akhir: x (0-100)

@@ -1,0 +1,26 @@
+[
+    {
+        "page": 1,
+        "content": "LABORATORIUM PEMBELAJARAN ILMU KOMPUTER\nFAKULTAS ILMU KOMPUTER\nUNIVERSITAS BRAWIJAYA\nBAB : PEMROGRAMAN KOTLIN\nNAMA : ACHMAD GALIH WICAKSANA PUTRA\nNIM 215150207111028\nTANGGAL : 08/09/2023\nASISTEN : - AZFAR RISLA A\n- JUBRIL BIRUNI P\nTUGAS 1\nA. Soal\nBuatlah program interaktif untuk menyelesaikan permasalahan menara Hanoi\nB. Source Code\nMain.kt\n1 import java.util.Scanner\n2\n3 fun main(args: Array<String>) {\n4 val sc = Scanner(System.`in`)\n5 print(\"Masukkan jumlah cakram dalam Tower of\nHanoi: \")\n6 val n = sc.nextInt()\n7 towerOfHanoi(n, 'A', 'B', 'C')\n8 }\n9\n10 fun towerOfHanoi(n: Int, sourceRod: Char = 'A',\nauxiliaryRod: Char = 'B', destinationRod: Char =\n'C') {\n11 if(n == 1) {\n12 println(\"Memindahkan cakram 1 dari tiang\n$sourceRod ke $destinationRod\")\n13 return\n14 }\n15\n16 towerOfHanoi(n -1, sourceRod, destinationRod,\nauxiliaryRod)\n17 println(\"Memindahkan cakram $n dari tiang\n$sourceRod ke $destinationRod\")\n18 towerOfHanoi(n - 1, auxiliaryRod, sourceRod,\ndestinationRod)\n19 }\nC. Screenshot"
+    },
+    {
+        "page": 2,
+        "content": "D. Penjelasan\nTUGAS 2\nA. Soal\nClient meminta program pendataan buku. Dengan fitur menambahkan buku dan\nmelihat seluruh daftar buku yang ada. Selesaikan program tersebut dengan\npendekatan object oriented dan interaktif\nB. Source Code\nMain.kt\n1 fun main(args: Array<String>) {\n2 val library = Library()\n3\n4 while (true) {\n5 println(\"Pilihan Menu:\")\n6 println(\"1. Tambahkan Buku\")\n7 println(\"2. Lihat Daftar Buku\")\n8 println(\"3. Keluar\")\n9 print(\"Masukkan pilihan Anda: \")\n10\n11 val choice = readLine() ?: \"\"\n12\n13 when (choice) {\n14 \"1\" -> {\n15 print(\"Masukkan judul buku: \")\n16 val tittle = readLine() ?: \"\"\n17 print(\"Masukkan nama penulis: \")\n18 val author = readLine() ?: \"\""
+    },
+    {
+        "page": 3,
+        "content": "19 library.addBook(tittle, author)\n20 println(\"Buku berhasil\nditambahkan.\")\n21 println(\"\")\n22 }\n23\n24 \"2\" -> {\n25 library.listBooks()\n26 }\n27\n28 \"3\" -> {\n29 return\n30 }\n31\n32 else -> {\n33 println(\"Pilihan tidak ada di menu,\nsilahkan coba lagi.\")\n34 println(\"\")\n35\n36 }\n37 }\n38 }\n39 }\n40\n41 class Book(val tittle: String, val author: String)\n{\n42 override fun toString(): String {\n43 return \"$tittle ditulis oleh $author\"\n44 }\n45 }\n46\n47 class Library {\n48 private val books = mutableListOf<Book>()\n49\n50 fun addBook(tittle: String, author: String) {\n51 val book = Book(tittle, author)\n52 books.add(book)\n53 }\n54\n55 fun listBooks() {\n56 if (books.isEmpty()) {\n57 println(\"Daftar buku kosong, silahkan\ntambahkan buku.\")\n58 println(\"\")\n59 } else {\n60 println(\"\")\n61 println(\"Daftar Buku: \")\n62 for ((i, book) in books.withIndex()) {\n63 println(\"${i + 1}. $book\")\n64 }\n65 println(\"\")\n66 }\n67 }\n68 }\nC. Screenshot"
+    },
+    {
+        "page": 4,
+        "content": "D. Penjelasan\nCoding di atas menerapkan konsep Object Oriented dan iteratif karena Book\ndidefinisikan sebagai object yang memiliki properti tittle dan author. Buku juga\nmenggunakan fungsi list (muttable list) untuk menyimpan buku yang sudah di\nbuat. Kemudian, coding dibuat menjadi true, sehingga selama user tidak\nmemilih keluar, maka program akan terus berjalan.\nTUGAS 3\nA. Soal\nBuatlah suatu program sederhana yang dapat menyeleksi bilangan prima pada\nrentang 1-100 dengan menggunakan minimal satu fitur pada functional\nprogramming. Jelaskan bagian kode mana yang menunjukkan bahwa kode\ntersebut termasuk fitur dari functional programming. Output harus seperti\ngambar berikut:\nB. Source Code\nMain.kt\n1 fun main(args: Array<String>) {\n2 val primeNumbers = (1..100).filter(::isPrime)"
+    },
+    {
+        "page": 5,
+        "content": "3\n4 println(\"Bilangan prima dalam rentang 1 - 100\nadalah:\")\n5 println(primeNumbers)\n6 }\n7\n8 fun isPrime(n: Int): Boolean {\n9 if (n <= 1) return false\n10 if (n <= 3) return true\n11 if (n % 2 == 0 || n % 3 == 0) return false\n12\n13 var i = 5\n14 while (i * i <= n) {\n15 if (n % i == 0 || n % (i + 2) == 0) return\nfalse\n16 i += 6\n17 }\n18 return true\n19 }\nC. Screenshot\nD. Penjelasan\nFungsi ‘filter’ merupakan fitur fungsional, di mana :\n‘(1..100’ membuat rentang angka dari 1 – 100 dan ‘filter(::isPrime)’ adalah\npenggunaan fungsi filter yang digunakan untuk menfilter elemen-elemen angka\npada rentang tersebut. Fungsi ‘isPrime’ adalah fungsi predikat yang digunakan\nsebagai kriteria filter. Ini adalah salah satu fitur fungsional utama, yaitu"
+    },
+    {
+        "page": 6,
+        "content": "kemampuan untuk meneruskan fungsi sebagai argumen atau menggunakannya\ndalam operasi pemrosesan koleksi. Hasilnya adalah primeNumbers, yang berisi\nsemua bilangan prima dalam rentang 1 hingga 100. Kemudian, kita mencetak\nbilangan prima tersebut dengan menggunakan ‘println()’."
+    }
+]

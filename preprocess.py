@@ -24,21 +24,21 @@ def data_parsing(pages):
             }
             accumulating_code = False
 
-        match_soal = re.search(r"A\. Soal\n(.*?)\nB\. Source Code", content, re.DOTALL)
+        match_soal = re.search(r"A\. Soal(.*?)\nB\. Source Code", content, re.DOTALL)
         if match_soal:
-            task["soal"] = match_soal.group(1).strip()
+            task["soal"] = match_soal.group(1).strip().lower()
 
-        match_code_start = re.search(r"B\. Source Code\n(.*?)(?:\nC\.|$)", content, re.DOTALL)
+        match_code_start = re.search(r"B\. Source Code(.*?)(?:\nC\.|$)", content, re.DOTALL)
         if match_code_start:
-            task["source_code"] = match_code_start.group(1).strip()
+            task["source_code"] = match_code_start.group(1).strip().lower()
 
         if accumulating_code:
-            task["source_code"] += "\n" + content.strip()
+            task["source_code"] += "\n" + content.strip().lower()
 
         # Ambil penjelasan
-        match_penjelasan = re.search(r"D\. Penjelasan\n(.*?)(?:$)", content, re.DOTALL)
+        match_penjelasan = re.search(r"D\. Penjelasan(.*?)(?:$)", content, re.DOTALL)
         if match_penjelasan:
-            task["penjelasan"] = match_penjelasan.group(1).strip()
+            task["penjelasan"] = match_penjelasan.group(1).strip().lower()
             accumulating_code = False
 
     if task:

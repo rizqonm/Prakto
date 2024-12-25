@@ -4,4 +4,9 @@
 
 Beri hasil evaluasi akhir dalam format berikut:
 - Kesimpulan: apakah semua elemen tersedia.
-- Nilai akhir: dengan format 0-100 (sebagai contoh 90, bukan 90/100, nilai berdasarkan jumlah iya/jumlahsturktur yang dicek*100)
+- Nilai akhir: dengan format 0-100, sebagai contoh 90, bukan 90/100, karena ada 3 tugas dan setiap tugas ada soal, source code, dan penjelasan. maka nanti nilainya akan (x/9*100)
+
+Format outputnya harus fix seperti ini, isinya yang disesuaikan yang.
+- Menjawab semua pertanyaan yang ada
+- Kesimpulan: penjelasan kesimpulan
+- Nilai akhir: x (0-100)
